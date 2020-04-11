@@ -34,9 +34,9 @@ const Todos = db.define('todo', {
         type: Sequelize.BOOLEAN,
         allowNull: false,
     },
-    // notes: {
-    //     type: Sequelize.ARRAY(Sequelize.TEXT)
-    // }
+    notes: {
+        type:Sequelize.STRING
+    }
 })
 
 module.exports = {
