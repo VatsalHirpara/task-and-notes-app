@@ -7,3 +7,26 @@ route.get('/', async (req, res) => {
     const todos = await Todos.findAll()
     res.send(todos)
 })
+
+route.post('/', async (req, res) => {
+
+    if (req.body.status === 'true') {
+      req.body.status = true
+    } else {
+      req.body.status = false
+    }
+    
+    const todo = {
+        title: req.body.title,
+        description:req.body.description,
+        due: req.body.due,
+        priority:req.body.priority,
+        status: req.body.status,
+    }
+    if( req.body.notes) todo.notes = req.body.notes.toString()
+
+    const newTodo = await Todos.create(todo)
+    res.status(201).send({ success: 'New task added', data: newTodo })
+})
+
+module.exports = route
