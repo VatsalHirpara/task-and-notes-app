@@ -63,4 +63,31 @@ route.post('/', async (req, res) => {
     res.status(201).send({ success: 'New task added', data: newTodo })
 })
 
+route.post('/:id/notes', async (req, res) => {
+    if (isNaN(Number(req.params.id))) {
+      return res.status(400).send({
+        error: 'todo id must be an integer',
+      })
+	}
+
+    const todo = await Todos.findByPk(req.params.id)
+    if (!todo) {
+      return res.status(404).send({error: `No todo found with id = ${req.params.id}`})
+	}
+	const note = req.body.note;
+	if(todo.notes===null){
+		const notes = []
+		notes.push(note)
+		todo.notes=notes.toString()
+	}
+	else{
+		const notes = todo.notes.split(',')
+		notes.push(note)
+		todo.notes=notes.toString()
+	}
+
+	await todo.save()
+	res.status(201).send({ success: 'New task added', data:note})
+})
+
 module.exports = route
