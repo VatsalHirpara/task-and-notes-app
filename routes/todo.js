@@ -8,6 +8,23 @@ route.get('/', async (req, res) => {
     res.send(todos)
 })
 
+route.get('/:id', async (req, res) => {
+  if (isNaN(Number(req.params.id))) {
+    return res.status(400).send({
+      error: 'todo id must be an integer',
+    })
+  }
+  const todo = await Todos.findByPk(req.params.id)
+
+  if (!todo) {
+    return res.status(404).send({
+      error: 'No todo found with id = ' + req.params.id,
+    })
+  }
+  res.send(todo)
+})
+
+
 route.post('/', async (req, res) => {
 
     if (req.body.status === 'true') {
