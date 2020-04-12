@@ -90,4 +90,26 @@ route.post('/:id/notes', async (req, res) => {
 	res.status(201).send({ success: 'New task added', data: note })
 })
 
+route.patch('/:id',async (req,res) => {
+	if (isNaN(Number(req.params.id))) {
+		return res.status(400).send({
+			error: 'todo id must be an integer',
+		})
+	}
+	const updatedTOdo = {id:req.params.id, ...req.body}
+	Todos.upsert(
+		updatedTOdo
+	)
+	.then((test) => {
+		if(test){
+			res.status(200);
+			res.send("Successfully stored");
+		}else{
+			res.status(200);
+			res.send("Successfully inserted");
+		}
+	})
+	.catch((err)=>console.log(err))
+}) 
+
 module.exports = route
