@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href=""> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Task nad notes manager</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col l10 offset-l1">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row"> 
+                            <form  id="task-form"> 
+                                    <div class="input-field col s6">
+                                        <input type="text" name="title" id="title" required >
+                                        <label for="title ">Title</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input type="text" name="description" id="description">
+                                        <label for="description">Description </label>
+                                    </div>
+                                    <div class="input-field col l3">
+                                        <input type="date" name="date" id="date" value="" required>
+                                    </div>
+                                    <div class="input-field col l3">
+                                        <select id="priority" class="browser-default" required> 
+                                            <option disabled>Priority</option>
+                                            <option value="low">Low</option>
+                                            <option value="medium" selected>Medium</option>
+                                            <option value="high">High</option>
+                                            <label for="priority">Priority</label>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col l4 center">
+                                        <button class="btn waves-effect teal" type="submit">Add task</button>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-title">
+                            <h5 id="task-title">Tasks</h5>
+                            Sort by :
+                            <button class="btn waves-effect blue darken-2 btn-small" id="due-ascd-btn" >due-date(asc)</button>
+                            <button class="btn waves-effect blue darken-2 btn-small" id="due-desc-btn">due-date(desc)</button>
+                            <button class="btn waves-effect blue darken-2 btn-small" id="priority-btn">priority</button>
+                            <button class="btn waves-effect blue darken-2 btn-small" id="status-btn">status</button>
+                        </div>  
+                        
+                        <ul class="collection collapsible expandable" id="task-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sort.js"></script>
+    <script src="todoUtil.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
