@@ -19,7 +19,7 @@ async function loadTasks(){
 }
 
 async function getTodos() {
-    const resp = await fetch('http://127.0.0.1:3000/todos/', { method: 'GET' })
+    const resp = await fetch('/todos', { method: 'GET' })
     const todos = await resp.json()
     return todos
 }
@@ -48,7 +48,7 @@ async function addTask(e){
 }
 
 async function addTaskToDatabase(todo){
-    let res = await fetch('/todos/', { 
+    let res = await fetch('/todos', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
