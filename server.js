@@ -12,7 +12,7 @@ app.use('/todos', todoRoute)
 
 db.sync()
   .then(() => {
-    app.listen(3000)
+    app.listen(SERVER_PORT)
   })
   .catch((err) => {
     console.error(err)
