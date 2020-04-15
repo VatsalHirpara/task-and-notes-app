@@ -48,7 +48,7 @@ async function addTask(e){
 }
 
 async function addTaskToDatabase(todo){
-    let res = await fetch('http://127.0.0.1:3000/todos/', { 
+    let res = await fetch('/todos/', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -112,4 +112,4 @@ function createLiElement(todo){
     let li = document.createElement('li')
     li.innerHTML = liHTML
     return li
-} 
+}

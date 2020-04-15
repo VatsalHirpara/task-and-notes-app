@@ -35,7 +35,7 @@ function addNote(e){
 }
 
 async function addNoteToDatabase(todoId,note){
-    uri = `http://127.0.0.1:3000/todos/${todoId}/notes`
+    uri = `/todos/${todoId}/notes`
     await fetch(uri, { 
         method: 'POST',
         headers: {
@@ -66,7 +66,7 @@ let modifyCheckBoxStatus = function(e){
     modifyCheckedValueInDatabase(todoId,e.target.checked)
 }
 async function modifyCheckedValueInDatabase(todoId,value){
-    let uri = `http://127.0.0.1:3000/todos/${todoId}`
+    let uri = `/todos/${todoId}`
     await fetch(uri, { 
         method: 'PATCH',
         headers: {
@@ -89,7 +89,7 @@ let modifyDue = function(e){
     modifyDueValueInDatabase(todoId,e.target.value)
 }
 async function modifyDueValueInDatabase(todoId,value){
-    let uri = `http://127.0.0.1:3000/todos/${todoId}`
+    let uri = `/todos/${todoId}`
     await fetch(uri, { 
         method: 'PATCH',
         headers: {
@@ -112,7 +112,7 @@ let modifyPriority = function(e){
     modifyPriorityValueInDatabase(todoId,e.target.value)
 }
 async function modifyPriorityValueInDatabase(todoId,value){
-    let uri = `http://127.0.0.1:3000/todos/${todoId}`
+    let uri = `/todos/${todoId}`
     await fetch(uri, { 
         method: 'PATCH',
         headers: {
